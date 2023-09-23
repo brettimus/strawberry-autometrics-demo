@@ -23,7 +23,9 @@ Try the named query `lastBook`, which is instrumented with autometrics:
 }
 ```
 
-Or try the named query
+You can also try the named query `books`, but I wasn't able to instrument this one with autometrics. I think we'd need to instrument the resolver itself, absent some modifications to the autometrics library to support `@strawberry.field`:
+
+
 
 ```graphql
 {
@@ -36,7 +38,7 @@ Or try the named query
 
 ## Adding Metrics
 
-We'll use the the autometrics cli to get going fast.
+We can use the the autometrics cli to get going fast with prometheus locally.
 
 Once that's installed, we just need to tell it how to scrape the example app:
 
@@ -49,4 +51,4 @@ am start :8000
 open http://localhost:6789
 ```
 
-After you've used the `lastBook` query, you should see metrics in the explorer
+After you've used the `lastBook` query a few times (via the GraphiQL interface), you should see metrics in the explorer.
