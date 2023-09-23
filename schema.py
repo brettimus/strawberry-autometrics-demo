@@ -30,9 +30,9 @@ class Query:
     books: typing.List[Book] = strawberry.field(resolver=get_books)
 
     # NOTE - `@autometrics` broke unless it was the first decorator on top of the resolver
-    #
-    @strawberry.field
+    #        We get the error `AttributeError: 'StrawberryField' object has no attribute '__qualname__'`
     @autometrics
+    @strawberry.field
     def last_book(self) -> Book:
         return get_books()[-1]
 
